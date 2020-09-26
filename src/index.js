@@ -1,40 +1,17 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import ReactDOM from "react-dom";
+import 'normalize.css';
+import '@fortawesome/fontawesome-free/js/all.js';
+import './index.css';
+import About from './views/About.jsx';
 
-class Form extends Component {
-  constructor() {
-    super();
-
-    this.state = {
-      value: ""
-    };
-
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  handleChange(event) {
-    const { value } = event.target;
-    this.setState(() => {
-      return {
-        value
-      };
-    });
-  }
-
-  render() {
-    return (
-      <form>
-        <input
-          type="text"
-          value={this.state.value}
-          onChange={this.handleChange}
-        />
-      </form>
-    );
-  }
+class Page extends PureComponent {
+    render() {
+        return (
+            <About />
+        );
+    }
 }
 
-export default Form;
-
 const wrapper = document.getElementById("container");
-wrapper ? ReactDOM.render(<Form />, wrapper) : false;
+wrapper ? ReactDOM.render(<Page />, wrapper) : false;
