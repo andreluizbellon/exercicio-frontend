@@ -1,36 +1,52 @@
-import React, { PureComponent } from 'react';
-import styled from 'styled-components';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 import { Card } from '../../../../components';
+import { fetchAndSetProjects } from './store/latestProjectsActions.js';
 import LatestProjectsMainProject from './main-project/LatestProjectsMainProject.jsx';
 import LatestProjectsSideProject from './side-project/LatestProjectsSideProject.jsx';
 
-export default class SectionLatestProjects extends PureComponent {
-    render() {
+function renderProjects(projects, loading) {
+    if (loading) {
+        return 'Loading...';
+    }
 
-        const project = {
-            title: 'Kickstarter - Potato salad app',
-            subtitle: 'A mobile app to help you make delicious potato salad',
-            picture: 'project-featured.jpg',
-            description: 'You can promote your main project here. Suspendisse in tellus dolor. Vivamus a tortor eu turpis pharetra consequat quis non metus. Aliquam aliquam, orci eu suscipit pellentesque, mauris dui tincidunt enim, eget iaculis ante dolor non turpis. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. At vero eos et accusamus et iusto odio dignissimos ducimus.',
-            url: 'http://www.example.com',
-        };
-        const project2 = {
-            title: 'Kickstarter - Potato salad app',
-            subtitle: 'A mobile app to help you make delicious potato salad',
-            picture: 'project-1.jpg',
-            description: 'You can put one of your secondary projects here. Suspendisse in tellus dolor. Vivamus a tortor eu turpis pharetra consequat quis non metus. Aliquam aliquam, orci eu suscipit pellentesque, mauris dui tincidunt enim, eget iaculis ante dolor non turpis.',
-            url: 'http://www.example.com',
+    return projects.map((project, index) => {
+        if (index === 0) {
+            return (
+                <LatestProjectsMainProject project={project} />
+            );
         }
 
         return (
-            <section>
-                <Card title="Latest Projects">
-                    <LatestProjectsMainProject project={project} />
-                    <LatestProjectsSideProject project={project2} />
-                    <LatestProjectsSideProject project={project2} />
-                    <LatestProjectsSideProject project={project2} />
-                </Card>
-            </section>
+            <LatestProjectsSideProject project={project} />
         );
+    });
+}
+
+function SectionLatestProjects(props) {
+    const { projects, loading, fetchAndSetProjects } = props;
+
+    useEffect(() => {
+        fetchAndSetProjects();
+    }, []);
+
+    return (
+        <section>
+            <Card title="Latest Projects">
+                {renderProjects(projects, loading)}
+            </Card>
+        </section>
+    );
+}
+
+const mapStateToProps = (state) => {
+    return {
+        projects: state.projects,
+        loading: state.loading,
     }
 }
+const mapDispatchToProps = {
+    fetchAndSetProjects,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SectionLatestProjects);

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "json-server --watch db.json",
-    "build": "webpack --mode production"
+    "build": "webpack --mode development"
   },
   "keywords": [],
   "author": "",
@@ -17,6 +17,9 @@
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-redux": "^7.2.1",
+    "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0",
     "styled-components": "^5.2.0"
   },
   "devDependencies": {

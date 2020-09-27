@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import { Provider } from 'react-redux';
 import styled from 'styled-components';
 import { Breakpoints } from '../../constants';
 import Header from './header/Header.jsx';
@@ -6,6 +7,7 @@ import AsideInfo from './aside/info/AsideInfo.jsx';
 import AsideSkills from './aside/skills/AsideSkills.jsx';
 import SectionAboutMe from './section/about-me/SectionAboutMe.jsx';
 import SectionLatestProjects from './section/latest-projects/SectionLatestProjects.jsx';
+import latestProjectsStore from './section/latest-projects/store/latestProjectsStore.js';
 
 const spacing = '20px';
 
@@ -53,7 +55,9 @@ export default class About extends PureComponent {
                 <Content>
                     <SectionContainer>
                         <SectionAboutMe />
-                        <SectionLatestProjects />
+                        <Provider store={latestProjectsStore}>
+                            <SectionLatestProjects />
+                        </Provider>
                     </SectionContainer>
                     <StyledAside>
                         <AsideInfo />
