@@ -70,7 +70,7 @@ export default class Header extends PureComponent {
                             <ButtonIcon icon="fab fa-yandex-international" />
                         </ButtonsContainer>
                     </InfoContainer>
-                    <Button icon="fas fa-paper-plane">Contact me</Button>
+                    <Button icon="fas fa-paper-plane" primary>Contact me</Button>
                 </Content>
             </StyledHeader>
         );

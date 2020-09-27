@@ -5,6 +5,7 @@ import Header from './header/Header.jsx';
 import AsideInfo from './aside/info/AsideInfo.jsx';
 import AsideSkills from './aside/skills/AsideSkills.jsx';
 import SectionAboutMe from './section/about-me/SectionAboutMe.jsx';
+import SectionLatestProjects from './section/latest-projects/SectionLatestProjects.jsx';
 
 const spacing = '20px';
 
@@ -22,6 +23,10 @@ const Content = styled.div`
 const SectionContainer = styled.div`
     flex: 1 1 0;
     padding: 0 ${spacing} 0 0;
+
+    & > * + * {
+        margin-top: ${spacing};
+    }
 
     @media (max-width: ${Breakpoints.DESKTOP}) {
         padding: 0 0 ${spacing} 0;
@@ -48,6 +53,7 @@ export default class About extends PureComponent {
                 <Content>
                     <SectionContainer>
                         <SectionAboutMe />
+                        <SectionLatestProjects />
                     </SectionContainer>
                     <StyledAside>
                         <AsideInfo />

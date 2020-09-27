@@ -9,7 +9,11 @@ const StyledButton = styled.button`
     padding: 8px 10px;
     font-family: 'Montserrat';
     color: #fff;
-    background-color: #57b952;
+    background-color: ${props => {
+        if (props.primary) return '#57b952';
+        if (props.info) return '#4b9fc6';
+        return '#ccc';
+    }};
 `;
 const Icon = styled.i`
     padding-right: 8px;
@@ -19,10 +23,12 @@ export default class Button extends PureComponent {
     static propTypes = {
         icon: PropTypes.string,
         children: PropTypes.node,
+        primary: PropTypes.bool,
+        info: PropTypes.bool,
     };
     
     render() {
-        const { icon, children } = this.props;
+        const { icon, children, ...props } = this.props;
         let iconComponent;
 
         if (icon != null) {
@@ -32,7 +38,7 @@ export default class Button extends PureComponent {
         }
 
         return (
-            <StyledButton>
+            <StyledButton {...props}>
                 {iconComponent}
                 {children}
             </StyledButton>
