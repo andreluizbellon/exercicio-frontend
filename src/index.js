@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import 'normalize.css';
 import '@fortawesome/fontawesome-free/js/all.js';
 import './index.css';
-import About from './views/About.jsx';
+import About from './views/about/About.jsx';
 
 class Page extends PureComponent {
     render() {

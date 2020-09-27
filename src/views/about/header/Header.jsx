@@ -1,10 +1,8 @@
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
-import Button from '../button/Button.jsx';
-import ButtonIcon from '../button-icon/ButtonIcon.jsx';
+import { Breakpoints } from '../../../constants';
+import { Button, ButtonIcon } from '../../../components';
 import profile from './img/profile.png';
-
-const breakpoint = '1024px';
 
 const StyledHeader = styled.header`
     background: #f5f5f5;
@@ -13,11 +11,11 @@ const StyledHeader = styled.header`
 const Content = styled.div`
     display: flex;
     align-items: center;
-    max-width: ${breakpoint};
+    max-width: ${Breakpoints.DESKTOP};
     margin: 0 auto;
     padding: 20px 0;
 
-    @media (max-width: ${breakpoint}) {
+    @media (max-width: ${Breakpoints.DESKTOP}) {
         flex-direction: column;
     }
 `;
@@ -31,7 +29,7 @@ const InfoContainer = styled.div`
         margin-top: 10px;
     }
 
-    @media (max-width: ${breakpoint}) {
+    @media (max-width: ${Breakpoints.DESKTOP}) {
         align-items: center;
         margin-bottom: 20px;
     }
