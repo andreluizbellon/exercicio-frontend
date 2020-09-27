@@ -49,3 +49,7 @@ Lembre-se de ir *comitando* suas alterações e fazendo *push* para seu reposit�
 - **Module bundler**: O código JS deve ser transpilado para ES5 e *empacotado* usando algum *module bundler* como **Webpack** (de preferência). 
 
 - **Dependências**: Todas as dependências usadas devem ser adicionadas ao `package.json`.
+
+## Resultado
+
+Para ver o resultado, faça o build com o `npm run build` e abra o `index.html` na pasta `dist`. 
